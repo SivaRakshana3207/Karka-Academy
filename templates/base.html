@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#ffffff" />
+    <title>{% block title %}{{ site.name }} | Stop Scrolling. Start Shipping.{% endblock %}</title>
+    <meta
+      name="description"
+      content="Karka AI & Tech Academy helps Gen-Z builders and switchers launch high-growth tech careers with zero upfront tuition through Pay After Placement, real client internships, and 1-on-1 mentorship in Nagercoil."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&family=Space+Grotesk:wght@500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+  </head>
+  <body class="theme-light">
+    <!-- Ambient Dynamic Background Glows -->
+    
+
+    <div class="page-shell">
+      <aside class="urgency-banner" aria-label="Academy information">
+        <div class="urgency-ticker">
+          <span class="ticker-pill">KARKA AI &amp; TECH ACADEMY</span>
+          <span class="ticker-text">Learn practical tech skills through mentorship, projects, and career-focused training.</span>
+          <a href="{{ url_for('apply') }}" class="ticker-link">Explore admissions <span aria-hidden="true">→</span></a>
+        </div>
+      </aside>
+
+      <!-- Glassmorphic Sticky Header -->
+      <header class="topbar" id="main-topbar">
+        <div class="container topbar-inner">
+          <a href="{{ url_for('home') }}" class="brand" aria-label="Karka AI & Tech Academy Home">
+            <div class="brand-logo-wrap">
+              <img class="brand-logo" src="{{ url_for('static', filename='img/karka-logo.webp') }}" alt="Karka AI &amp; Tech Academy" />
+            </div>
+          </a>
+
+          <nav class="main-nav" aria-label="Main Navigation">
+            <a class="nav-link" href="#courses">Career tracks</a>
+            <a class="nav-link" href="#pap-section">Pay after placement</a>
+            <a class="nav-link" href="#placements-wall">Learner stories</a>
+            <a class="nav-link" href="#projects-studio">Projects</a>
+            <a class="nav-link nav-highlight" href="#discover">Find my path</a>
+          </nav>
+
+          <div class="nav-actions">
+            <a class="btn btn-primary nav-enroll-btn" href="{{ url_for('apply') }}">
+              <span>Explore admissions</span>
+              <span class="btn-arrow" aria-hidden="true">↗</span>
+            </a>
+            <button class="mobile-toggle" id="mobile-menu-btn" type="button" aria-label="Toggle navigation menu" aria-expanded="false">
+              <span></span>
+              <span></span>
+              <span></span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Mobile Navigation Drawer -->
+        <div class="mobile-drawer" id="mobile-drawer" aria-hidden="true">
+          <div class="mobile-drawer-inner">
+            <div class="mobile-drawer-head">
+              <span class="mobile-drawer-title">Navigation</span>
+              <button class="mobile-close-btn" id="mobile-close-btn" type="button" aria-label="Close menu">&times;</button>
+            </div>
+            <nav class="mobile-nav-links">
+              <a class="mobile-link" href="#courses"><span>⚡</span> Career Tracks</a>
+              <a class="mobile-link" href="#pap-section"><span>🛡️</span> Pay After Placement</a>
+              <a class="mobile-link" href="#placements-wall"><span>💼</span> Student Placements</a>
+              <a class="mobile-link" href="#projects-studio"><span>🚀</span> Real Internship Projects</a>
+              <a class="mobile-link" href="#pillars"><span>🧠</span> The 4-Pillar Engine</a>
+              <a class="mobile-link" href="#simulator"><span>📅</span> 180-Day Simulator</a>
+              <a class="mobile-link" href="#discover"><span>🎯</span> 60-Second Career Quiz</a>
+              <a class="mobile-link" href="#assistant"><span>🤖</span> AI Career Concierge</a>
+              <a class="mobile-link" href="#faq"><span>❓</span> Frequently Asked Questions</a>
+            </nav>
+            <div class="mobile-drawer-footer">
+              <a class="btn btn-primary full-width" href="{{ url_for('apply') }}">Apply for Admission (₹0 Upfront) ↗</a>
+              <a class="btn btn-secondary full-width whatsapp-btn" href="https://wa.me/919345580857?text=Hi%20Karka%20Team!%20I%20want%20to%20know%20about%20the%20Pay%20After%20Placement%20program." target="_blank" rel="noopener">
+                <span>💬 WhatsApp Admissions</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main id="main-content">
+        {% block content %}{% endblock %}
+      </main>
+
+      <!-- High-Impact Gen-Z Footer -->
+      <footer class="site-footer">
+        <div class="container footer-grid">
+          <div class="footer-brand-col">
+            <div class="footer-brand">
+              <img class="brand-logo" src="{{ url_for('static', filename='img/karka-logo.webp') }}" alt="Karka AI &amp; Tech Academy" />
+              <span class="footer-brand-tag">NAGERCOIL TECH ACCELERATOR</span>
+            </div>
+            <p class="footer-desc">
+              Karka AI &amp; Tech Academy helps learners build practical technology skills through mentorship, project work, and career-focused training.
+            </p>
+            <div class="social-links">
+              <a href="https://www.instagram.com/karka.ai" target="_blank" rel="noopener" class="social-icon" aria-label="Instagram @karka.ai">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                <span>@karka.ai</span>
+              </a>
+              <a href="https://www.karka.academy/" target="_blank" rel="noopener" class="social-icon" aria-label="Website">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                <span>karka.academy</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="footer-col">
+            <h4 class="footer-heading">Career Tracks</h4>
+            <ul class="footer-list">
+              <li><a href="{{ url_for('home') }}#courses">React + Python Fullstack</a></li>
+              <li><a href="{{ url_for('home') }}#courses">MERN Architecture</a></li>
+              <li><a href="{{ url_for('home') }}#courses">Generative AI &amp; LLMs</a></li>
+              <li><a href="{{ url_for('home') }}#courses">AI &amp; Data Science</a></li>
+              <li><a href="{{ url_for('home') }}#courses">UI/UX Product Design</a></li>
+              <li><a href="{{ url_for('home') }}#courses">Full Stack Internship</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <h4 class="footer-heading">The Karka Model</h4>
+            <ul class="footer-list">
+              <li><a href="{{ url_for('home') }}#pap-section">Pay After Placement Model</a></li>
+              <li><a href="{{ url_for('home') }}#placements-wall">Wall of Placements</a></li>
+              <li><a href="{{ url_for('home') }}#projects-studio">Real Client Projects</a></li>
+              <li><a href="{{ url_for('home') }}#pillars">4-Pillar Job Engine</a></li>
+              <li><a href="{{ url_for('home') }}#discover">60-Second Matchmaker</a></li>
+              <li><a href="{{ url_for('home') }}#faq">Admissions FAQ</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-col footer-contact-col">
+            <h4 class="footer-heading">Visit Campus</h4>
+            <div class="contact-card">
+              <p class="contact-location">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                <span>{{ site.location }}</span>
+              </p>
+              <p class="contact-phone">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                <a href="tel:{{ site.phone }}">{{ site.phone }}</a>
+              </p>
+              <p class="contact-email">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                <a href="mailto:{{ site.email }}">{{ site.email }}</a>
+              </p>
+              <a href="{{ url_for('apply') }}" class="btn btn-primary btn-sm full-width mt-12">Apply in 60s ⚡</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="container footer-bottom">
+          <div class="footer-bottom-left">
+            <span>© {{ year }} {{ site.name }} AI &amp; Tech Academy. Built for Gen-Z Builders.</span>
+          </div>
+          <div class="footer-bottom-right">
+            <span>Learn · Build · Prepare for your next step</span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <!-- Floating Action Dock (Mobile & Desktop) -->
+    <div class="floating-dock">
+      <a class="dock-btn dock-whatsapp" href="https://wa.me/919345580857?text=Hi%20Karka%20Admissions!%20I%20want%20to%20know%20how%20Pay%20After%20Placement%20works." target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.669-.699c.969.54 1.761.814 2.79.814 3.18 0 5.767-2.586 5.768-5.766 0-3.18-2.587-5.766-5.767-5.766zm0 10.375c-.933 0-1.748-.276-2.483-.733l-.177-.105-1.844.484.493-1.802-.116-.184c-.521-.828-.797-1.574-.796-2.455.001-2.539 2.067-4.605 4.608-4.605 2.539 0 4.605 2.066 4.605 4.605 0 2.54-2.065 4.605-4.605 4.605zm2.527-3.466c-.139-.07-8.23-4.062-8.368-4.132-.139-.07-.24-.105-.341.07-.101.175-.389.49-.476.591-.087.101-.175.114-.314.044-.139-.07-.587-.216-1.118-.689-.413-.368-.692-.823-.773-.962-.081-.139-.009-.214.061-.284.063-.062.139-.163.209-.245.07-.082.093-.139.139-.232.046-.093.023-.175-.012-.245-.035-.07-.341-.821-.468-1.125-.123-.296-.248-.256-.341-.261l-.291-.005c-.101 0-.265.038-.403.189-.138.151-.529.517-.529 1.261 0 .744.542 1.463.618 1.564.076.101 1.066 1.628 2.582 2.282.361.156.643.249.863.319.362.115.692.099.952.06.29-.044.891-.364 1.016-.715.126-.351.126-.653.088-.716-.038-.063-.139-.101-.278-.171z"/></svg>
+        <span class="dock-tooltip">Chat with Admissions</span>
+      </a>
+      <a class="dock-btn dock-ai" href="#assistant" aria-label="Open AI Career Concierge">
+        <span class="ai-pulse"></span>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2 2 2 0 0 1-2-2V4a2 2 0 0 1 2-2z"></path><rect x="4" y="8" width="16" height="12" rx="4"></rect><circle cx="9" cy="14" r="1.5"></circle><circle cx="15" cy="14" r="1.5"></circle><line x1="8" y1="18" x2="16" y2="18"></line></svg>
+        <span class="dock-tooltip">Ask Karka AI</span>
+      </a>
+    </div>
+
+    <!-- Mobile Sticky CTA Bar -->
+    <div class="mobile-cta-wrap">
+      <a class="btn btn-secondary mobile-wa-btn" href="https://wa.me/919345580857?text=Hi%20Karka%20Team!%20I%20want%20to%20know%20about%20Pay%20After%20Placement." target="_blank" rel="noopener">
+        <span>💬 WhatsApp</span>
+      </a>
+      <a class="btn btn-primary mobile-enroll-btn" href="{{ url_for('apply') }}">
+        <span>Enroll (₹0 Upfront)</span>
+        <span aria-hidden="true">↗</span>
+      </a>
+    </div>
+
+    <!-- Syllabus Details Modal Backdrop -->
+    <div class="karka-modal-backdrop" id="syllabus-modal-backdrop" aria-hidden="true">
+      <div class="karka-modal" role="dialog" aria-modal="true" aria-labelledby="modal-track-title">
+        <button class="modal-close-btn" id="modal-close-btn" type="button" aria-label="Close modal">&times;</button>
+        <div class="modal-body" id="modal-content-target">
+          <!-- Dynamically populated by app.js -->
+        </div>
+      </div>
+    </div>
+
+    <script>
+      window.KARKA_TRACKS = {{ tracks | tojson | safe }};
+      window.KARKA_SIMULATOR = {{ simulator | tojson | safe }};
+    </script>
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+    {% block scripts %}{% endblock %}
+  </body>
+</html>

@@ -1,0 +1,886 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ site.name }} | Build skills. Shape your future.{% endblock %}
+
+{% block content %}
+<section class="hero-section" id="hero">
+  <div class="container hero-container">
+    <div class="hero-content reveal">
+      <div class="hero-badge-wrap">
+        <span class="live-pulse-dot"></span>
+        <span class="hero-badge-text">KARKA AI &amp; TECH ACADEMY · NAGERCOIL</span>
+      </div>
+
+      <h1 class="hero-title">
+        Build skills.<br />
+        Shape your <span class="gradient-text-plum">future.</span>
+      </h1>
+
+      <p class="hero-lead">
+        Learn software development, AI, and design by building practical projects with mentor support. Explore Karka's Pay After Placement model and review the program terms with admissions.
+      </p>
+
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#courses">
+          <span>Explore career tracks</span>
+          <span class="btn-icon" aria-hidden="true">↗</span>
+        </a>
+        <a class="btn btn-secondary" href="#discover">
+          <span>Find your starting point</span>
+          <span class="btn-icon" aria-hidden="true">→</span>
+        </a>
+      </div>
+
+      <div class="hero-stats-strip">
+        <div class="stat-pill"><strong class="stat-number">Learn</strong><span class="stat-desc">AI + tech foundations</span></div>
+        <div class="stat-divider"></div>
+        <div class="stat-pill"><strong class="stat-number">Build</strong><span class="stat-desc">Projects with purpose</span></div>
+        <div class="stat-divider"></div>
+        <div class="stat-pill"><strong class="stat-number">Grow</strong><span class="stat-desc">Mentored career prep</span></div>
+      </div>
+    </div>
+
+    <div class="hero-interactive reveal">
+      <div class="hero-journey-card">
+        <div class="hero-journey-image">
+          <img src="{{ url_for('static', filename='img/internship-students.webp') }}" alt="Learners collaborating on technology projects" />
+          <span class="journey-image-label">YOUR JOURNEY, YOUR PACE</span>
+        </div>
+        <div class="hero-journey-copy">
+          <p class="journey-eyebrow">A practical path forward</p>
+          <h2>From curious to career-ready.</h2>
+          <ol class="journey-steps">
+            <li><span>01</span><div><strong>Learn the foundations</strong><small>Start with the skills your track needs.</small></div></li>
+            <li><span>02</span><div><strong>Build real projects</strong><small>Turn what you learn into work you can show.</small></div></li>
+            <li><span>03</span><div><strong>Prepare for opportunities</strong><small>Practice with mentor and career support.</small></div></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================================================================
+     INSTAGRAM @KARKA.AI REELS WALL: Vibrant Campus Culture & Energy
+     =================================================================== -->
+<section class="section insta-reels-section" id="insta-reels">
+  <div class="container section-intro reveal">
+    <div class="intro-badge">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+      <span>FOLLOW US @KARKA.AI</span>
+    </div>
+    <h2>Living The Builder Life at Karka.</h2>
+    <p class="section-deck">
+      Zero corporate boring lectures. Real campus hackathons, student career jumps, and spicy tech truths straight from our Instagram reels.
+    </p>
+  </div>
+
+  <div class="container insta-grid reveal">
+    {% for reel in insta_reels %}
+    <article class="reel-card" data-reel-id="{{ reel.id }}">
+      <div class="reel-topline">
+        <span class="reel-tag">{{ reel.tag }}</span>
+        <span class="reel-views">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+          {{ reel.views }}
+        </span>
+      </div>
+
+      <a class="reel-play-stage" href="{{ reel.instagram_url }}" target="_blank" rel="noopener noreferrer" aria-label="Watch {{ reel.title }} on Instagram">
+        <img class="reel-thumbnail" src="{{ url_for('static', filename=reel.thumbnail) }}" alt="{{ reel.title }} Reel thumbnail" loading="lazy" />
+        <span class="reel-play-btn" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+        </span>
+      </a>
+
+      <div class="reel-content">
+        <span class="reel-category">{{ reel.category }}</span>
+        <h3 class="reel-title">{{ reel.title }}</h3>
+        <p class="reel-hook">{{ reel.hook }}</p>
+      </div>
+
+      <div class="reel-footer">
+        <span class="reel-likes">❤️ {{ reel.likes }} builders liked</span>
+        <a class="reel-link" href="{{ reel.instagram_url }}" target="_blank" rel="noopener noreferrer">
+          Watch on Insta ↗
+        </a>
+      </div>
+    </article>
+    {% endfor %}
+  </div>
+
+  <div class="container insta-footer-cta reveal">
+    <a class="btn btn-secondary btn-insta" href="https://www.instagram.com/karka.ai" target="_blank" rel="noopener">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+      <span>Join 12,000+ Followers on Instagram @karka.ai</span>
+      <span aria-hidden="true">↗</span>
+    </a>
+  </div>
+</section>
+
+<!-- ===================================================================
+     HIRING PARTNERS: Infinite Marquee of Top Tech Employers
+     =================================================================== -->
+<section class="marquee-section" aria-label="Hiring Partners">
+  <div class="marquee-label-wrap">
+    <span class="marquee-label">OUR BUILDERS WORK AT TECH LEADERS &amp; STARTUPS</span>
+  </div>
+  <div class="marquee-track-wrap">
+    <div class="marquee-track">
+      {% for partner in hiring_partners %}
+      <div class="partner-badge">
+        <span class="partner-name">{{ partner.name }}</span>
+        <span class="partner-tier">{{ partner.tier }}</span>
+      </div>
+      {% endfor %}
+      <!-- Duplicate for seamless infinite loop -->
+      {% for partner in hiring_partners %}
+      <div class="partner-badge">
+        <span class="partner-name">{{ partner.name }}</span>
+        <span class="partner-tier">{{ partner.tier }}</span>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- ===================================================================
+     CAREER TRACKS: Interactive Filtering & Syllabus Inspection
+     =================================================================== -->
+<section class="section courses-section" id="courses">
+  <div class="container section-intro reveal">
+    <div class="intro-badge">
+      <span>⚡ 6 INDUSTRY-DEFINING TRACKS</span>
+    </div>
+    <h2>Choose Your Tech Superpower.</h2>
+    <p class="section-deck">
+      Each track is a rigorous 180-day immersion packed with production projects, 1-on-1 mentorship, and 100% Pay After Placement support.
+    </p>
+
+    <!-- Category Filter Controls -->
+    <div class="track-filters-wrap" role="tablist" aria-label="Filter career tracks">
+      <button class="track-filter-btn active" type="button" data-filter="all" role="tab" aria-selected="true">
+        <span>All Tracks</span>
+      </button>
+      <button class="track-filter-btn" type="button" data-filter="coding" role="tab" aria-selected="false">
+        <span>💻 Coding &amp; Fullstack</span>
+      </button>
+      <button class="track-filter-btn" type="button" data-filter="ai" role="tab" aria-selected="false">
+        <span>🤖 Gen AI &amp; Data</span>
+      </button>
+      <button class="track-filter-btn" type="button" data-filter="design" role="tab" aria-selected="false">
+        <span>🎨 UI/UX Design</span>
+      </button>
+      <button class="track-filter-btn" type="button" data-filter="internship" role="tab" aria-selected="false">
+        <span>💼 Internship</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="container tracks-grid reveal" id="tracks-cards-grid">
+    {% for track in tracks %}
+    <article class="track-card track-tone-{{ track.tone }}" data-category="{{ track.filter_group }}" id="track-card-{{ track.id }}">
+      <div class="track-card-header">
+        <div class="track-image-wrap">
+          {% if track.id == 'fullstack' %}
+          <img class="track-image" src="{{ url_for('static', filename='img/track-fullstack.webp') }}" alt="{{ track.title }} artwork" loading="lazy" />
+          {% elif track.id == 'mern' %}
+          <img class="track-image" src="{{ url_for('static', filename='img/internship-students.webp') }}" alt="Learners collaborating on a full-stack application" loading="lazy" />
+          {% elif track.id == 'genai' %}
+          <img class="track-image" src="{{ url_for('static', filename='img/track-genai.webp') }}" alt="{{ track.title }} artwork" loading="lazy" />
+          {% elif track.id == 'datascience' %}
+          <img class="track-image" src="{{ url_for('static', filename='img/track-data-science.webp') }}" alt="{{ track.title }} artwork" loading="lazy" />
+          {% elif track.id == 'uiux' %}
+          <img class="track-image" src="{{ url_for('static', filename='img/track-uiux.webp') }}" alt="{{ track.title }} artwork" loading="lazy" />
+          {% elif track.id == 'internship' %}
+          <img class="track-image" src="{{ url_for('static', filename='img/track-internship.webp') }}" alt="{{ track.title }} artwork" loading="lazy" />
+          {% endif %}
+          <span class="track-kicker">{{ track.eyebrow }}</span>
+        </div>
+      </div>
+
+      <div class="track-card-body">
+        <div class="track-meta-top">
+          <span class="track-badge-category">{{ track.category }}</span>
+          <span class="track-salary-badge">{{ track.salary_range }}</span>
+        </div>
+
+        <h3 class="track-title">{{ track.title }}</h3>
+        <p class="track-desc">{{ track.desc }}</p>
+
+        <div class="track-outcome-box">
+          <span class="outcome-label">🎯 Target Role:</span>
+          <strong class="outcome-val">{{ track.key_outcome }}</strong>
+        </div>
+
+        <div class="track-stack-list">
+          {% for item in track.stack %}
+          <span class="stack-chip">{{ item }}</span>
+          {% endfor %}
+        </div>
+      </div>
+
+      <div class="track-card-footer">
+        <div class="track-duration-pill">
+          <span>⏱️ {{ track.duration }}</span>
+          <span class="pill-divider">·</span>
+          <span>🚀 {{ track.projects_count }}</span>
+        </div>
+        <div class="track-actions-row">
+          <button class="btn btn-outline btn-sm syllabus-trigger" type="button" data-track-id="{{ track.id }}">
+            <span>Syllabus</span>
+            <span aria-hidden="true">📖</span>
+          </button>
+          <a class="btn btn-primary btn-sm" href="{{ url_for('apply') }}?track={{ track.id }}">
+            <span>Enroll</span>
+            <span aria-hidden="true">↗</span>
+          </a>
+        </div>
+      </div>
+    </article>
+    {% endfor %}
+  </div>
+
+  <div class="container courses-footer-cta reveal">
+    <div class="courses-help-banner">
+      <div class="help-copy">
+        <h4>Confused which track aligns with your natural strengths?</h4>
+        <p>Take our 60-second interactive career matchmaker and get tailored curriculum guidance.</p>
+      </div>
+      <a class="btn btn-primary" href="#discover">
+        <span>Find My Perfect Track 🎯</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===================================================================
+     PAY AFTER PLACEMENT (PAP) & DYNAMIC ROI CALCULATOR
+     =================================================================== -->
+<section class="section pap-section" id="pap-section">
+  <div class="container section-intro reveal">
+    <div class="intro-badge intro-badge-fire">
+      <span>🛡️ ZERO RISK · 100% ALIGNED INCENTIVES</span>
+    </div>
+    <h2>Learn first. Pay after a qualifying placement.</h2>
+    <p class="section-deck">
+      Start with ₹0 upfront tuition. Karka’s written Pay After Placement agreement explains qualifying roles, salary thresholds, and when course fees are due.
+    </p>
+  </div>
+
+  <div class="container pap-grid reveal">
+    <!-- Comparison Box -->
+    <div class="pap-comparison-panel">
+      <div class="comparison-column comp-old">
+        <div class="comp-header">
+          <span class="comp-badge">UPFRONT-FEE MODEL</span>
+          <h3>Costs come before outcomes</h3>
+        </div>
+        <ul class="comp-list">
+          <li class="comp-cross">Tuition is paid before training begins</li>
+          <li class="comp-cross">Learners carry the upfront financial commitment</li>
+          <li class="comp-cross">Project and career support vary by provider</li>
+          <li class="comp-cross">Payment is not necessarily linked to a job outcome</li>
+        </ul>
+      </div>
+
+      <div class="comparison-column comp-new">
+        <div class="comp-header">
+          <span class="comp-badge comp-badge-karka">KARKA PAY AFTER PLACEMENT</span>
+          <h3>Build skills before course fees are due</h3>
+        </div>
+        <ul class="comp-list">
+          <li class="comp-check"><strong>₹0 upfront:</strong> No course tuition charged at enrollment</li>
+          <li class="comp-check"><strong>Learn by building:</strong> Practical projects and mentor guidance</li>
+          <li class="comp-check"><strong>Career preparation:</strong> Resume and interview support</li>
+          <li class="comp-check"><strong>Clear eligibility:</strong> Placement and payment conditions are defined in your signed agreement</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Interactive PAP ROI Calculator -->
+    <div class="pap-calculator-card reveal">
+      <div class="calc-header">
+        <span class="calc-tag">INTERACTIVE ROI SIMULATOR</span>
+        <h3>Explore a salary example</h3>
+        <p>See an illustrative income estimate. This slider is not a placement or salary promise.</p>
+      </div>
+
+      <div class="calc-controls">
+        <div class="slider-header">
+          <span>Example annual salary (LPA)</span>
+          <strong class="slider-display" id="calc-salary-display">₹ 6.5 LPA</strong>
+        </div>
+        <input type="range" class="calc-range" id="salary-range-input" min="3.5" max="15.0" step="0.5" value="6.5" aria-label="Target salary in LPA" />
+        <div class="range-ticks">
+          <span>₹3.5L</span>
+          <span>₹9.0L</span>
+          <span>₹15.0L</span>
+        </div>
+      </div>
+
+      <div class="calc-metrics-grid">
+        <div class="calc-metric-box metric-zero">
+          <span class="metric-label">Upfront Tuition Fee</span>
+          <strong class="metric-val">₹ 0</strong>
+          <small class="metric-note">Zero cost to begin</small>
+        </div>
+        <div class="calc-metric-box metric-zero">
+          <span class="metric-label">Cost During Training</span>
+          <strong class="metric-val">₹ 0</strong>
+          <small class="metric-note">Focus 100% on skills</small>
+        </div>
+        <div class="calc-metric-box metric-highlight">
+          <span class="metric-label">Estimated gross per month</span>
+          <strong class="metric-val" id="calc-monthly-pay">₹ 54,166 / mo</strong>
+          <small class="metric-note">Before tax and deductions</small>
+        </div>
+        <div class="calc-metric-box metric-highlight">
+          <span class="metric-label">Illustrative 3-year gross</span>
+          <strong class="metric-val" id="calc-3yr-income">₹ 21,45,000</strong>
+          <small class="metric-note">Assumes 12% annual salary growth</small>
+        </div>
+      </div>
+
+      <div class="calc-guarantee-note">
+        <span class="shield-icon">🛡️</span>
+        <p><strong>Check the agreement:</strong> Eligibility thresholds and payment terms depend on the program agreement. The salary figures above are examples only.</p>
+      </div>
+
+      <a class="btn btn-primary full-width" href="{{ url_for('apply') }}">
+        <span>Discuss Pay After Placement terms</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===================================================================
+     STUDENT PLACEMENTS WALL OF FAME ("PROOF OVER PROMISES")
+     =================================================================== -->
+<section class="section placements-section" id="placements-wall">
+  <div class="container section-intro reveal">
+    <div class="intro-badge">
+      <span>🏆 VERIFIED ALUMNI SUCCESS</span>
+    </div>
+    <h2>Real Builders. Real Paychecks. Real Proof.</h2>
+    <p class="section-deck">
+      Don't listen to marketing slogans. Listen to the learners who walked in with zero tech experience and walked out with high-growth software careers.
+    </p>
+  </div>
+
+  <div class="container story-grid reveal">
+    {% for story in stories %}
+    <article class="placement-story-card" style="--accent-tone: var(--{{ story.tone }});">
+      <div class="story-card-top">
+        <div class="story-avatar-wrap">
+          <span class="story-avatar-initials avatar-tone-{{ story.tone }}">{{ story.avatar }}</span>
+          <div class="story-identity">
+            <h3 class="story-name">{{ story.name }}</h3>
+            <span class="story-role-company">{{ story.role }} @ <strong>{{ story.company }}</strong></span>
+          </div>
+        </div>
+        <span class="story-hike-pill">{{ story.hike }}</span>
+      </div>
+
+      <div class="story-transformation">
+        <div class="trans-item trans-before">
+          <span class="trans-label">BEFORE KARKA</span>
+          <p>{{ story.before }}</p>
+        </div>
+        <div class="trans-arrow" aria-hidden="true">→</div>
+        <div class="trans-item trans-journey">
+          <span class="trans-label">180-DAY SPRINT</span>
+          <p>{{ story.journey }}</p>
+        </div>
+      </div>
+
+      <blockquote class="story-quote">
+        “{{ story.quote }}”
+      </blockquote>
+
+      <div class="story-proof-strip">
+        <span class="proof-icon">✅</span>
+        <div class="proof-details">
+          <span class="proof-label">PORTFOLIO EVIDENCE</span>
+          <strong>{{ story.proof }}</strong>
+        </div>
+      </div>
+    </article>
+    {% endfor %}
+  </div>
+</section>
+
+<!-- ===================================================================
+     REAL INTERNSHIP PROJECTS STUDIO ("PROOF OVER PAPER")
+     =================================================================== -->
+<section class="section projects-studio-section" id="projects-studio">
+  <div class="container section-intro reveal">
+    <div class="intro-badge">
+      <span>🚀 PRODUCTION-GRADE ENGINEERING</span>
+    </div>
+    <h2>Real Client Deliverables. Zero Toy Tutorial Clones.</h2>
+    <p class="section-deck">
+      Employers don't hire paper certificates. They hire builders with genuine GitHub pull requests, Docker containers, and deployed cloud endpoints.
+    </p>
+  </div>
+
+  <div class="container projects-grid reveal">
+    {% for project in projects %}
+    <article class="project-studio-card" id="project-{{ project.id }}">
+      <div class="project-card-header">
+        <div class="project-badge-row">
+          <span class="project-category-tag">{{ project.category }}</span>
+          <span class="project-badge-pill">{{ project.badge }}</span>
+        </div>
+        <h3 class="project-name">{{ project.name }}</h3>
+        <p class="project-tagline">{{ project.tagline }}</p>
+      </div>
+
+      <div class="project-card-body">
+        <div class="project-problem-block">
+          <span class="project-block-title">PROBLEM STATEMENT</span>
+          <p>{{ project.problem }}</p>
+        </div>
+
+        <div class="project-outcome-block">
+          <span class="project-block-title">PRODUCTION SOLUTION</span>
+          <p>{{ project.outcome }}</p>
+        </div>
+
+        <div class="project-metrics-banner">
+          <span>{{ project.metrics }}</span>
+        </div>
+
+        <div class="project-tech-chips">
+          {% for item in project.stack %}
+          <span class="tech-chip">{{ item }}</span>
+          {% endfor %}
+        </div>
+      </div>
+
+      <div class="project-card-footer">
+        <span class="project-build-note">Build this in your track</span>
+        <a class="btn btn-outline btn-sm" href="{{ url_for('apply') }}">
+          <span>Build Projects Like This ↗</span>
+        </a>
+      </div>
+    </article>
+    {% endfor %}
+  </div>
+
+  <!-- Real Internship Visual Banner -->
+  <div class="container internship-visual-banner reveal">
+    <div class="banner-layout">
+      <div class="banner-copy">
+        <span class="banner-kicker">ON-CAMPUS INTERNSHIP SPRINT</span>
+        <h2>Work in a Real Startup Environment at Our Nagercoil Campus.</h2>
+        <p>
+          Experience daily standups, code reviews with senior tech leads, live CI/CD pipelines, and client demonstrations. This is where your confidence transforms from learner to professional engineer.
+        </p>
+        <div class="banner-highlights">
+          <div class="highlight-item"><span>💻 1-on-1 Senior Engineer Reviews</span></div>
+          <div class="highlight-item"><span>🚀 Real Pull Requests to Production</span></div>
+          <div class="highlight-item"><span>💼 Pre-Placement Offer (PPO) Opportunities</span></div>
+        </div>
+        <a class="btn btn-primary mt-16" href="{{ url_for('apply') }}?track=internship">
+          <span>Apply for Full Stack Internship ⚡</span>
+        </a>
+      </div>
+
+      <div class="banner-media">
+        <div class="media-frame">
+          <img src="{{ url_for('static', filename='img/internship-students.webp') }}" alt="Karka student builders collaborating on live projects" loading="lazy" />
+          <div class="media-overlay-badge">
+            <span class="pulse-green"></span>
+            <span>LIVE INTERNSHIP HUB · NAGERCOIL</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================================================================
+     THE 4-PILLAR CAREER ENGINE: Why Karka Grads Stand Out
+     =================================================================== -->
+<section class="section pillars-section" id="pillars">
+  <div class="container section-intro reveal">
+    <div class="intro-badge">
+      <span>🧠 THE UNFAIR ADVANTAGE</span>
+    </div>
+    <h2>Your Complete Job-Ready Engine.</h2>
+    <p class="section-deck">
+      Coding is only 25% of landing a high-paying tech career. Our 4-pillar system guarantees you master speaking, system architecture, AI tools, and interview confidence.
+    </p>
+  </div>
+
+  <div class="container pillars-container reveal">
+    <div class="pillar-buttons-list" role="tablist" aria-label="The 4 Pillars">
+      {% for pillar in pillars %}
+      <button class="pillar-select-btn{% if loop.first %} active{% endif %}" type="button" data-pillar-index="{{ loop.index0 }}" role="tab" aria-selected="{{ 'true' if loop.first else 'false' }}">
+        <span class="pillar-num">{{ pillar[0] }}</span>
+        <div class="pillar-btn-text">
+          <strong>{{ pillar[1] }}</strong>
+          <small>{{ pillar[2] }}</small>
+        </div>
+      </button>
+      {% endfor %}
+    </div>
+
+    <div class="pillar-display-card" id="pillar-content-card">
+      <div class="pillar-card-inner active" id="pillar-card-0">
+        <span class="card-eyebrow">PILLAR 01 · PROFESSIONAL FLUENCY</span>
+        <h3>Business Communication &amp; Executive Storytelling</h3>
+        <p class="pillar-hero-desc">
+          Speak like a tech lead. Write like one too. In modern tech companies, your ability to explain complex technical trade-offs is what earns you promotions and high offers.
+        </p>
+        <ul class="pillar-checklist">
+          <li><strong>Executive Speaking:</strong> Daily standups, technical demos, sprint retrospectives</li>
+          <li><strong>Client Presentations:</strong> Pitching technical architecture and feature proposals</li>
+          <li><strong>Tech Writing:</strong> Professional email etiquette, PR documentation, design briefs</li>
+          <li><strong>Active Listening:</strong> Understanding client specs and non-technical stakeholder needs</li>
+        </ul>
+      </div>
+
+      <div class="pillar-card-inner" id="pillar-card-1">
+        <span class="card-eyebrow">PILLAR 02 · PRODUCTION ARCHITECTURE</span>
+        <h3>Modern App Building &amp; Cloud Deployment</h3>
+        <p class="pillar-hero-desc">
+          Learn the tools real tech startups use to ship. No 15-year-old syllabus. You build responsive React SPAs, high-concurrency Python/Node APIs, and containerized Docker apps.
+        </p>
+        <ul class="pillar-checklist">
+          <li><strong>Fullstack Modern Web:</strong> React 19, TypeScript, Tailwind, Next.js / Express</li>
+          <li><strong>Backend Microservices:</strong> Python FastAPI, Flask, Node.js, RESTful standards</li>
+          <li><strong>Databases &amp; Cloud:</strong> PostgreSQL, Redis caching, Docker, AWS/Vercel deployment</li>
+          <li><strong>Git Flow &amp; CI/CD:</strong> Pull requests, automated testing, code review culture</li>
+        </ul>
+      </div>
+
+      <div class="pillar-card-inner" id="pillar-card-2">
+        <span class="card-eyebrow">PILLAR 03 · 10X LEVERAGE</span>
+        <h3>AI Multiplier &amp; Autonomous Agent Skills</h3>
+        <p class="pillar-hero-desc">
+          Use AI as a force multiplier, not a cheat code. Master modern prompt engineering, vector retrieval (RAG), and agentic tools that turn you into a 10x productive builder.
+        </p>
+        <ul class="pillar-checklist">
+          <li><strong>Prompt Engineering Patterns:</strong> Zero-shot, Few-shot, ReAct reasoning loops</li>
+          <li><strong>Vector Retrieval (RAG):</strong> Embeddings, semantic search with ChromaDB &amp; Pinecone</li>
+          <li><strong>Autonomous AI Agents:</strong> LangChain, LangGraph, tool-calling for DB operations</li>
+          <li><strong>AI Developer Workflows:</strong> Cursor, Claude Code, and Copilot for rapid testing</li>
+        </ul>
+      </div>
+
+      <div class="pillar-card-inner" id="pillar-card-3">
+        <span class="card-eyebrow">PILLAR 04 · INTERVIEW MASTERY</span>
+        <h3>Interview Readiness &amp; Placement Pipeline</h3>
+        <p class="pillar-hero-desc">
+          Walk into your dream interviews with undeniable portfolio evidence, ATS-optimized profiles, and confident behavioral answers that win immediate offers.
+        </p>
+        <ul class="pillar-checklist">
+          <li><strong>ATS-Optimized Resumes:</strong> Pass automated keyword filters with 95%+ match scores</li>
+          <li><strong>50+ 1-on-1 Mock Interviews:</strong> Algorithmic logic, system design, behavioral questions</li>
+          <li><strong>Group Discussions &amp; Whiteboarding:</strong> Live problem-solving under real pressure</li>
+          <li><strong>Direct Partner Referrals:</strong> Priority interview access to Karka's hiring network</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================================================================
+     180-DAY CAREER SIMULATOR: See Your Transformation Timeline
+     =================================================================== -->
+<section class="section simulator-section" id="simulator">
+  <div class="container section-intro reveal">
+    <div class="intro-badge">
+      <span>📅 180-DAY SPRINT TO EMPLOYMENT</span>
+    </div>
+    <h2>See Your Journey Before You Begin.</h2>
+    <p class="section-deck">
+      A transparent day-by-day roadmap showing how we take you from square one to an interview-ready, confident tech professional.
+    </p>
+  </div>
+
+  <div class="container simulator-container reveal">
+    <div class="simulator-rail" role="tablist" aria-label="Career roadmap timeline">
+      {% for stage in simulator %}
+      <button class="stage-node-btn{% if loop.first %} active{% endif %}" type="button" data-stage-index="{{ loop.index0 }}" role="tab" aria-selected="{{ 'true' if loop.first else 'false' }}">
+        <span class="stage-day-tag">{{ stage.day }}</span>
+        <strong class="stage-title-tag">{{ stage.title }}</strong>
+      </button>
+      {% endfor %}
+    </div>
+
+    <div class="simulator-display-card">
+      <div class="sim-card-inner">
+        <div class="sim-card-top">
+          <span class="sim-stage-indicator" id="sim-active-day">{{ simulator[0].day }}</span>
+          <span class="sim-milestone-badge" id="sim-active-milestone">🎯 Milestone: {{ simulator[0].milestone }}</span>
+        </div>
+        <h3 class="sim-stage-heading" id="sim-active-title">{{ simulator[0].title }}</h3>
+
+        <div class="sim-skills-block">
+          <span class="block-label">WHAT YOU MASTER &amp; SHIP:</span>
+          <ul class="sim-skills-list" id="sim-active-skills">
+            {% for item in simulator[0].skills %}
+            <li>{{ item }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+
+        <div class="sim-card-footer">
+          <a class="btn btn-primary" href="{{ url_for('apply') }}">
+            <span>Start This 180-Day Transformation ⚡</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================================================================
+     CAREER PERSONA MATCHMAKER & 60s QUIZ ("DISCOVER YOUR PATH")
+     =================================================================== -->
+<section class="section discover-section" id="discover">
+  <div class="container discover-layout">
+    <div class="discover-intro-col reveal">
+      <div class="intro-badge">
+        <span>🎯 60-SECOND CAREER QUIZ</span>
+      </div>
+      <h2>Get a Personalized Route To Your Dream Tech Role.</h2>
+      <p>
+        Tell us your background, interest, and goals. Our smart matchmaker will instantly map your optimal track, estimated placement salary, and customized syllabus.
+      </p>
+
+      <div class="quiz-perks-list">
+        <div class="quiz-perk">
+          <span class="perk-icon">⚡</span>
+          <span>Takes under 60 seconds with instant results</span>
+        </div>
+        <div class="quiz-perk">
+          <span class="perk-icon">🎁</span>
+          <span>Unlocks <strong>+150 XP</strong> and fast-track admissions review</span>
+        </div>
+        <div class="quiz-perk">
+          <span class="perk-icon">🛡️</span>
+          <span>100% Free · Zero obligation to enroll</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="discover-form-col reveal">
+      <form id="discovery-form" class="discovery-card">
+        <div class="discovery-card-header">
+          <span class="card-step-badge">QUESTIONNAIRE</span>
+          <h3>Find Your Perfect Track</h3>
+        </div>
+
+        <div class="discovery-fields-grid">
+          <label class="quiz-field">
+            <span class="field-label">1. What sparks your curiosity most?</span>
+            <select name="interest" id="quiz-interest" required>
+              <option value="">Select an interest</option>
+              <option value="Building web & mobile apps">Building scalable web &amp; mobile apps</option>
+              <option value="Generative AI & LLM Automation">Generative AI, LLMs &amp; Automation</option>
+              <option value="Data Science & Machine Learning">Data Science &amp; Predictive Analytics</option>
+              <option value="UI/UX & Product Design">UI/UX Design, Figma &amp; User Research</option>
+              <option value="Corporate Internship Immersion">Live Corporate Developer Internship</option>
+            </select>
+          </label>
+
+          <label class="quiz-field">
+            <span class="field-label">2. What is your current background?</span>
+            <select name="level" id="quiz-level" required>
+              <option value="">Select your background</option>
+              <option value="Complete Beginner (Non-Coding)">Complete Beginner (Zero coding experience)</option>
+              <option value="College Student (CSE/IT)">College Student (CSE / IT background)</option>
+              <option value="College Student (Non-CSE / Arts / Commerce)">College Student (Mechanical, Civil, B.Com, etc.)</option>
+              <option value="Working Professional (Career Switcher)">Working Professional wanting to switch to Tech</option>
+            </select>
+          </label>
+
+          <label class="quiz-field">
+            <span class="field-label">3. What is your dream target role?</span>
+            <select name="role" id="quiz-role" required>
+              <option value="">Select target role</option>
+              <option value="Fullstack Software Engineer">Fullstack Software Engineer (₹4.5L – ₹11.5L)</option>
+              <option value="Gen AI & LLM Developer">Gen AI &amp; LLM Developer (₹6.0L – ₹14.5L)</option>
+              <option value="Data Scientist / ML Engineer">Data Scientist / ML Engineer (₹4.8L – ₹12.0L)</option>
+              <option value="UI/UX Product Designer">UI/UX Product Designer (₹4.0L – ₹9.5L)</option>
+              <option value="Associate Software Engineer">Associate Software Engineer via Internship</option>
+            </select>
+          </label>
+
+          <label class="quiz-field">
+            <span class="field-label">4. How much time can you commit daily?</span>
+            <select name="time" id="quiz-time" required>
+              <option value="">Select time commitment</option>
+              <option value="Full-time Immersive (6-8 hrs/day)">Full-time Immersive (6–8 hrs/day on campus)</option>
+              <option value="Flexible Hybrid (3-4 hrs/day)">Flexible Hybrid (3–4 hrs/day)</option>
+              <option value="Weekend & Evening (15-20 hrs/week)">Weekend &amp; Evening (15–20 hrs/week)</option>
+            </select>
+          </label>
+        </div>
+
+        <button type="submit" class="btn btn-primary full-width btn-quiz-submit">
+          <span>Unlock My Personalized Route 🚀</span>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Dynamic Quiz Result Panel -->
+  <div class="container result-panel-wrap reveal" id="path-result" hidden>
+    <div class="result-surface">
+      <div class="result-top">
+        <span class="xp-badge" id="xp-reward">+150 XP UNLOCKED!</span>
+        <span class="result-matched-pill">BEST FIT MATCHED</span>
+      </div>
+
+      <div class="result-main">
+        <h3 class="result-title" id="discover-title">Fullstack Software Engineer</h3>
+        <p class="result-summary" id="discover-summary">
+          Based on your background and commitment, we have mapped out your optimal 180-day transition.
+        </p>
+
+        <div class="result-route-cards">
+          <div class="route-card">
+            <span class="route-label">TARGET ROLE</span>
+            <strong id="discover-goal">Fullstack Developer</strong>
+          </div>
+          <div class="route-card">
+            <span class="route-label">TUITION MODEL</span>
+            <strong>₹0 Upfront (Pay After Placement)</strong>
+          </div>
+          <div class="route-card full-route">
+            <span class="route-label">YOUR TAILORED LEARNING SPRINT</span>
+            <strong id="discover-journey">Foundations → Core APIs → Vector AI → Live Client Deliverables → Placement Pipeline</strong>
+          </div>
+        </div>
+
+        <div class="result-cta-row">
+          <a class="btn btn-primary" id="btn-quiz-enroll" href="{{ url_for('apply') }}">
+            <span>Claim This Track With ₹0 Upfront ⚡</span>
+          </a>
+          <a class="btn btn-secondary" href="https://wa.me/919345580857?text=Hi%20Karka!%20I%20just%20took%20the%20career%20quiz%20and%20matched%20with%20my%20track." target="_blank" rel="noopener">
+            <span>Discuss on WhatsApp 💬</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================================================================
+     AI CAREER CONCIERGE 2.0: Cyber Glass Floating Chat
+     =================================================================== -->
+<section class="section assistant-section" id="assistant">
+  <div class="container section-intro reveal">
+    <div class="intro-badge">
+      <span>✨ 24/7 AI CAREER MENTOR</span>
+    </div>
+    <h2>Ask Karka AI Anything Before You Commit.</h2>
+    <p class="section-deck">
+      Get instant, zero-bullshit answers on Pay After Placement terms, course prerequisites, client project details, and campus life in Nagercoil.
+    </p>
+  </div>
+
+  <div class="container assistant-box-container reveal">
+    <div class="assistant-terminal">
+      <div class="assistant-topbar">
+        <div class="assistant-dots">
+          <span class="dot dot-red"></span>
+          <span class="dot dot-yellow"></span>
+          <span class="dot dot-green"></span>
+        </div>
+        <div class="assistant-title-group">
+          <span class="assistant-model-tag">KARKA AI CONCIERGE</span>
+          <span class="online-indicator">● ONLINE</span>
+        </div>
+      </div>
+
+      <div class="assistant-chips-bar">
+        <button type="button" class="chip-query">How does Pay After Placement work?</button>
+        <button type="button" class="chip-query">Can a beginner learn Gen AI?</button>
+        <button type="button" class="chip-query">What projects will I build?</button>
+        <button type="button" class="chip-query">Where is the Nagercoil campus?</button>
+      </div>
+
+      <div class="assistant-chat-window" id="assistant-chat" aria-live="polite">
+        <div class="chat-bubble bot">
+          <div class="bot-header"><span class="bot-icon">🤖</span> <strong>Karka AI:</strong></div>
+          <div class="bot-text">Hey builder! I'm Karka's AI Career Concierge. Ask me anything about our 6 career tracks, zero-upfront Pay After Placement, real client projects, or campus admissions!</div>
+        </div>
+      </div>
+
+      <form id="assistant-form" class="assistant-input-form">
+        <input id="assistant-input" type="text" maxlength="800" placeholder="Ask about fees, career tracks, internships..." aria-label="Ask Karka AI" autocomplete="off" />
+        <button type="submit" class="btn btn-primary btn-chat-send" id="btn-send-chat">
+          <span>Send</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+        </button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ===================================================================
+     FAQ ACCORDION: Honest Answers Before You Commit
+     =================================================================== -->
+<section class="section faq-section" id="faq">
+  <div class="container section-intro reveal">
+    <div class="intro-badge">
+      <span>❓ FREQUENTLY ASKED QUESTIONS</span>
+    </div>
+    <h2>Clear, Honest Answers. Zero Hidden Traps.</h2>
+    <p class="section-deck">
+      Everything you need to know about our Pay After Placement agreement, class timings, and placement process.
+    </p>
+  </div>
+
+  <div class="container faq-accordion reveal">
+    {% for question, answer in faqs %}
+    <div class="faq-item">
+      <button type="button" class="faq-question" aria-expanded="false">
+        <span class="faq-q-text">{{ question }}</span>
+        <span class="faq-icon-cross">+</span>
+      </button>
+      <div class="faq-answer">
+        <p>{{ answer }}</p>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+<!-- ===================================================================
+     FINAL MOTIVATIONAL CTA: Stop Procrastinating, Start Building
+     =================================================================== -->
+<section class="section final-cta-section">
+  <div class="container final-cta-box reveal">
+    <div class="cta-glow-backdrop" aria-hidden="true"></div>
+    <span class="cta-kicker">YOUR CAREER WON'T CHANGE BY SAVING THIS BOOKMARK</span>
+    <h2>It Changes When You Commit To Writing Your First Line Of Code.</h2>
+    <p class="cta-deck">
+      Zero upfront tuition. 180 days of intense, supported building. A community of ambitious Gen-Z peers who refuse to settle for mediocre salaries.
+    </p>
+
+    <div class="cta-buttons-row">
+      <a class="btn btn-primary btn-lg btn-glow" href="{{ url_for('apply') }}">
+        <span>Apply for Admission (₹0 Upfront) ⚡</span>
+      </a>
+      <a class="btn btn-secondary btn-lg" href="https://wa.me/919345580857?text=Hi%20Karka%20Team!%20I'm%20ready%20to%20start%20my%20tech%20career." target="_blank" rel="noopener">
+        <span>Chat with Mentor on WhatsApp 💬</span>
+      </a>
+    </div>
+
+    <div class="cta-micro-trust">
+      <span>🛡️ 100% Free Application</span>
+      <span>•</span>
+      <span>⚡ Next Cohort Starting Soon</span>
+      <span>•</span>
+      <span>🚀 Nagercoil Campus &amp; Hybrid</span>
+    </div>
+  </div>
+</section>
+{% endblock %}

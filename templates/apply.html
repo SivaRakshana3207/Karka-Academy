@@ -1,0 +1,152 @@
+{% extends 'base.html' %}
+
+{% block title %}Apply for Admission (₹0 Upfront) | {{ site.name }} AI &amp; Tech Academy{% endblock %}
+
+{% block content %}
+<section class="section apply-hero-section">
+  <div class="container apply-layout">
+    <div class="apply-copy-col reveal">
+      <div class="intro-badge intro-badge-fire">
+        <span>🔥 100% PAY AFTER PLACEMENT · ZERO UPFRONT TUITION</span>
+      </div>
+      <h1 class="apply-title">
+        Bet On Yourself.<br />
+        <span class="gradient-text-fire">We Invest in Your Future.</span>
+      </h1>
+      <p class="apply-lead">
+        No heavy upfront student loans. No outdated theoretical cramming. Tell us your background and what you want to build—we'll help you secure your seat for the upcoming cohort.
+      </p>
+
+      <div class="apply-steps-timeline">
+        <div class="apply-step-item">
+          <span class="step-num">01</span>
+          <div class="step-details">
+            <strong>60-Second Application</strong>
+            <p>Submit your interest. 100% free with zero financial commitment.</p>
+          </div>
+        </div>
+        <div class="apply-step-item">
+          <span class="step-num">02</span>
+          <div class="step-details">
+            <strong>1-on-1 Mentor Discovery</strong>
+            <p>Our senior engineers assess your aptitude and suggest your best track.</p>
+          </div>
+        </div>
+        <div class="apply-step-item">
+          <span class="step-num">03</span>
+          <div class="step-details">
+            <strong>Lock In Your Spot &amp; Ship</strong>
+            <p>Begin 180 days of production training at our Nagercoil hub or hybrid.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="apply-trust-box">
+        <div class="trust-pill"><span>🛡️ ₹0 Tuition During Training</span></div>
+        <div class="trust-pill"><span>💼 Pay Only When Placed at ₹3.5+ LPA</span></div>
+        <div class="trust-pill"><span>⚡ Only 12 Spots Left This Batch</span></div>
+      </div>
+
+      <div class="apply-quick-wa">
+        <p>Prefer chatting on WhatsApp before filling the form?</p>
+        <a class="btn btn-secondary btn-sm" href="https://wa.me/919345580857?text=Hi%20Karka%20Admissions!%20I'm%20applying%20for%20the%20Pay%20After%20Placement%20program." target="_blank" rel="noopener">
+          <span>💬 Chat with Admissions Team on WhatsApp</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="apply-form-col reveal">
+      <div class="lead-form-card">
+        <div class="form-card-header">
+          <span class="form-card-pill">OFFICIAL ADMISSIONS PORTAL</span>
+          <h2>Candidate Application</h2>
+          <p>Fill out the details below to claim priority evaluation.</p>
+        </div>
+
+        <form class="lead-form" method="post" action="{{ url_for('apply') }}">
+          {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+              <div class="flash-list">
+                {% for category, message in messages %}
+                  <div class="flash {{ category }}">{{ message }}</div>
+                {% endfor %}
+              </div>
+            {% endif %}
+          {% endwith %}
+
+          <div class="field-row">
+            <label>
+              <span>Full Name <span class="req">*</span></span>
+              <input type="text" name="name" placeholder="e.g. Alex Robinson / Priya Raman" required />
+            </label>
+          </div>
+
+          <div class="field-row two-up">
+            <label>
+              <span>Phone / WhatsApp <span class="req">*</span></span>
+              <input type="tel" name="phone" placeholder="e.g. +91 98765 43210" required />
+            </label>
+            <label>
+              <span>Email Address</span>
+              <input type="email" name="email" placeholder="you@domain.com" />
+            </label>
+          </div>
+
+          <div class="field-row two-up">
+            <label>
+              <span>Current Status / Education</span>
+              <select name="current_education">
+                <option value="">Select current status</option>
+                <option value="College Student (Final Year)">College Student (Final Year)</option>
+                <option value="College Student (Pre-Final Year)">College Student (Pre-Final Year)</option>
+                <option value="Recent College Graduate (Fresher)">Recent College Graduate (Fresher)</option>
+                <option value="Non-Tech Working Professional">Working Professional (Non-Tech Switcher)</option>
+                <option value="School Student / Self-Taught">School Student / Self-Taught</option>
+              </select>
+            </label>
+            <label>
+              <span>Area of Primary Interest</span>
+              <select name="area_of_interest">
+                <option value="">Select interest</option>
+                <option value="Fullstack Web & APIs">Fullstack Web &amp; APIs (React + Python)</option>
+                <option value="MERN Fullstack Architecture">MERN Stack (MongoDB, Express, React, Node)</option>
+                <option value="Generative AI & LLMs">Generative AI &amp; Autonomous Agents</option>
+                <option value="Data Science & ML">Data Science &amp; Machine Learning</option>
+                <option value="UI/UX Product Design">UI/UX Product Design &amp; Systems</option>
+                <option value="Corporate Internship Immersion">Fullstack Developer Internship</option>
+              </select>
+            </label>
+          </div>
+
+          <div class="field-row">
+            <label>
+              <span>Target Program / Track <span class="req">*</span></span>
+              <select name="preferred_program" required>
+                <option value="">Select your preferred track</option>
+                {% for item in tracks %}
+                  <option value="{{ item.title }}" {% if selected_track == item.id %}selected{% endif %}>{{ item.title }} ({{ item.duration }})</option>
+                {% endfor %}
+              </select>
+            </label>
+          </div>
+
+          <div class="field-row">
+            <label>
+              <span>Your Ambition / Career Goal</span>
+              <textarea name="message" rows="3" placeholder="Tell us briefly about your current background and where you want to see your career 6 months from now."></textarea>
+            </label>
+          </div>
+
+          <button type="submit" class="btn btn-primary full-width submit-btn btn-glow">
+            <span>Submit Application (₹0 Upfront) 🚀</span>
+          </button>
+
+          <p class="form-micro-privacy">
+            🔒 By submitting, you agree to receive application updates via WhatsApp and Phone. We respect your privacy — zero spam.
+          </p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

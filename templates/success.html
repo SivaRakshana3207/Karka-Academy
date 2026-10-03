@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+
+{% block title %}Application Received! Welcome to Karka AI &amp; Tech Academy{% endblock %}
+
+{% block content %}
+<section class="section success-hero-section">
+  <!-- Confetti canvas placeholder -->
+  <div class="confetti-container" id="confetti-canvas" aria-hidden="true"></div>
+
+  <div class="container success-container reveal">
+    <div class="success-card-box">
+      <div class="celebration-badge-wrap">
+        <span class="celebration-badge">🎉</span>
+      </div>
+
+      <div class="success-kicker">
+        <span>APPLICATION SUBMITTED SUCCESSFULLY</span>
+      </div>
+
+      <h1 class="success-heading">
+        Welcome to the AI Revolution, <span class="gradient-text-fire">Future Builder!</span>
+      </h1>
+
+      <p class="success-lead">
+        You've taken the hardest step: deciding to build instead of scrolling. Your details are secured with our admissions team.
+      </p>
+
+      <div class="next-steps-card">
+        <h3>What Happens in the Next 24 Hours:</h3>
+        <div class="next-steps-timeline">
+          <div class="next-step-row">
+            <span class="step-indicator">1</span>
+            <div class="step-text">
+              <strong>WhatsApp &amp; Phone Verification</strong>
+              <p>Our senior admissions mentor will reach out to confirm your goals and track prerequisites.</p>
+            </div>
+          </div>
+          <div class="next-step-row">
+            <span class="step-indicator">2</span>
+            <div class="step-text">
+              <strong>1-on-1 Technical Aptitude &amp; PAP Agreement</strong>
+              <p>We review your background and provide full transparent details of the Pay After Placement agreement.</p>
+            </div>
+          </div>
+          <div class="next-step-row">
+            <span class="step-indicator">3</span>
+            <div class="step-text">
+              <strong>Batch Seat Locked &amp; Discord Onboarding</strong>
+              <p>You receive your workstation credentials, GitHub sprint curriculum, and orientation schedule.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="success-actions-row">
+        <a class="btn btn-primary btn-glow" href="https://wa.me/919345580857?text=Hi%20Karka%20Team!%20I%20just%20submitted%20my%20admissions%20form%20for%20Pay%20After%20Placement." target="_blank" rel="noopener">
+          <span>Speed Up: Message on WhatsApp 💬</span>
+        </a>
+        <a class="btn btn-secondary" href="https://www.instagram.com/karka.ai" target="_blank" rel="noopener">
+          <span>Follow @karka.ai on Instagram 📸</span>
+        </a>
+        <a class="btn btn-ghost" href="{{ url_for('home') }}">
+          <span>Back to Home 🏠</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
