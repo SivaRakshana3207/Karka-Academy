@@ -297,117 +297,338 @@
         </ul>
       </div>
     </div>
-
-    <!-- Interactive PAP ROI Calculator -->
-    <div class="pap-calculator-card reveal">
-      <div class="calc-header">
-        <span class="calc-tag">INTERACTIVE ROI SIMULATOR</span>
-        <h3>Explore a salary example</h3>
-        <p>See an illustrative income estimate. This slider is not a placement or salary promise.</p>
-      </div>
-
-      <div class="calc-controls">
-        <div class="slider-header">
-          <span>Example annual salary (LPA)</span>
-          <strong class="slider-display" id="calc-salary-display">₹ 6.5 LPA</strong>
-        </div>
-        <input type="range" class="calc-range" id="salary-range-input" min="3.5" max="15.0" step="0.5" value="6.5" aria-label="Target salary in LPA" />
-        <div class="range-ticks">
-          <span>₹3.5L</span>
-          <span>₹9.0L</span>
-          <span>₹15.0L</span>
-        </div>
-      </div>
-
-      <div class="calc-metrics-grid">
-        <div class="calc-metric-box metric-zero">
-          <span class="metric-label">Upfront Tuition Fee</span>
-          <strong class="metric-val">₹ 0</strong>
-          <small class="metric-note">Zero cost to begin</small>
-        </div>
-        <div class="calc-metric-box metric-zero">
-          <span class="metric-label">Cost During Training</span>
-          <strong class="metric-val">₹ 0</strong>
-          <small class="metric-note">Focus 100% on skills</small>
-        </div>
-        <div class="calc-metric-box metric-highlight">
-          <span class="metric-label">Estimated gross per month</span>
-          <strong class="metric-val" id="calc-monthly-pay">₹ 54,166 / mo</strong>
-          <small class="metric-note">Before tax and deductions</small>
-        </div>
-        <div class="calc-metric-box metric-highlight">
-          <span class="metric-label">Illustrative 3-year gross</span>
-          <strong class="metric-val" id="calc-3yr-income">₹ 21,45,000</strong>
-          <small class="metric-note">Assumes 12% annual salary growth</small>
-        </div>
-      </div>
-
-      <div class="calc-guarantee-note">
-        <span class="shield-icon">🛡️</span>
-        <p><strong>Check the agreement:</strong> Eligibility thresholds and payment terms depend on the program agreement. The salary figures above are examples only.</p>
-      </div>
-
-      <a class="btn btn-primary full-width" href="{{ url_for('apply') }}">
-        <span>Discuss Pay After Placement terms</span>
-      </a>
-    </div>
   </div>
 </section>
 
 <!-- ===================================================================
-     STUDENT PLACEMENTS WALL OF FAME ("PROOF OVER PROMISES")
+     KARKA — STUDENT PLACEMENTS / WALL OF FAME
      =================================================================== -->
+
 <section class="section placements-section" id="placements-wall">
-  <div class="container section-intro reveal">
-    <div class="intro-badge">
-      <span>🏆 VERIFIED ALUMNI SUCCESS</span>
+
+  <!-- Background decoration -->
+  <div class="placements-bg-glow placements-bg-glow-left" aria-hidden="true"></div>
+  <div class="placements-bg-glow placements-bg-glow-right" aria-hidden="true"></div>
+
+  <!-- ================================================================
+       SECTION HEADER
+       ================================================================ -->
+
+  <div class="container placements-container">
+
+    <div class="placements-intro section-intro reveal">
+
+      <div class="placements-badge">
+        <span class="placements-badge-icon" aria-hidden="true">✦</span>
+        <span>VERIFIED ALUMNI SUCCESS</span>
+      </div>
+
+      <div class="placements-eyebrow">
+        PROOF OVER PROMISES
+      </div>
+
+      <h2 class="placements-heading">
+        Real Builders.
+        <span>Real Journeys.</span>
+        Real Proof.
+      </h2>
+
+      <p class="placements-deck">
+        Meet learners who turned consistent practice, real projects,
+        and mentor guidance into meaningful career progress.
+      </p>
+
+      <!-- Journey principles -->
+      <div class="placements-principles" aria-label="Karka learning journey">
+
+        <div class="placement-principle">
+          <span class="principle-icon">01</span>
+          <span>Learn</span>
+        </div>
+
+        <span class="principle-connector" aria-hidden="true"></span>
+
+        <div class="placement-principle">
+          <span class="principle-icon">02</span>
+          <span>Build</span>
+        </div>
+
+        <span class="principle-connector" aria-hidden="true"></span>
+
+        <div class="placement-principle">
+          <span class="principle-icon">03</span>
+          <span>Experience</span>
+        </div>
+
+        <span class="principle-connector" aria-hidden="true"></span>
+
+        <div class="placement-principle">
+          <span class="principle-icon">04</span>
+          <span>Grow</span>
+        </div>
+
+      </div>
+
     </div>
-    <h2>Real Builders. Real Paychecks. Real Proof.</h2>
-    <p class="section-deck">
-      Don't listen to marketing slogans. Listen to the learners who walked in with zero tech experience and walked out with high-growth software careers.
-    </p>
-  </div>
 
-  <div class="container story-grid reveal">
-    {% for story in stories %}
-    <article class="placement-story-card" style="--accent-tone: var(--{{ story.tone }});">
-      <div class="story-card-top">
-        <div class="story-avatar-wrap">
-          <span class="story-avatar-initials avatar-tone-{{ story.tone }}">{{ story.avatar }}</span>
-          <div class="story-identity">
-            <h3 class="story-name">{{ story.name }}</h3>
-            <span class="story-role-company">{{ story.role }} @ <strong>{{ story.company }}</strong></span>
+
+    <!-- ================================================================
+         STUDENT STORIES
+         ================================================================ -->
+
+    <div class="story-grid placements-story-grid reveal">
+
+      {% for story in stories %}
+
+      <article
+        class="placement-story-card placement-story-card-{{ loop.index }}"
+        style="--accent-tone: var(--{{ story.tone }});"
+      >
+
+        <!-- Top accent -->
+        <div class="story-card-accent" aria-hidden="true"></div>
+
+
+        <!-- Card header -->
+        <header class="story-card-header">
+
+          <div class="story-index">
+            <span>{{ "%02d" | format(loop.index) }}</span>
+            <span>STORY</span>
           </div>
+
+          <div class="story-status">
+            <span class="story-status-dot"></span>
+            <span>VERIFIED</span>
+          </div>
+
+        </header>
+
+
+        <!-- Student identity -->
+        <div class="story-profile">
+
+          <div class="story-avatar-container">
+
+            <div class="story-avatar-ring" aria-hidden="true"></div>
+
+            <span
+              class="story-avatar-initials avatar-tone-{{ story.tone }}"
+              aria-hidden="true"
+            >
+              {{ story.avatar }}
+            </span>
+
+          </div>
+
+          <div class="story-identity">
+
+            <h3 class="story-name">
+              {{ story.name }}
+            </h3>
+
+            <p class="story-role-company">
+              {{ story.role }}
+              <span class="story-at">@</span>
+              <strong>{{ story.company }}</strong>
+            </p>
+
+          </div>
+
+          <div class="story-hike">
+            <span class="story-hike-label">CAREER SHIFT</span>
+            <span class="story-hike-pill">
+              {{ story.hike }}
+            </span>
+          </div>
+
         </div>
-        <span class="story-hike-pill">{{ story.hike }}</span>
+
+
+        <!-- ============================================================
+             TRANSFORMATION
+             ============================================================ -->
+
+        <div class="story-transformation">
+
+          <!-- Before -->
+          <div class="story-stage story-stage-before">
+
+            <div class="stage-number">
+              01
+            </div>
+
+            <div class="stage-content">
+
+              <span class="stage-label">
+                BEFORE KARKA
+              </span>
+
+              <p>
+                {{ story.before }}
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <!-- Arrow -->
+          <div class="story-stage-arrow" aria-hidden="true">
+
+            <span class="stage-arrow-line"></span>
+
+            <span class="stage-arrow-circle">
+              →
+            </span>
+
+          </div>
+
+
+          <!-- Journey -->
+          <div class="story-stage story-stage-journey">
+
+            <div class="stage-number">
+              02
+            </div>
+
+            <div class="stage-content">
+
+              <span class="stage-label">
+                THE JOURNEY
+              </span>
+
+              <p>
+                {{ story.journey }}
+              </p>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- ============================================================
+             TESTIMONIAL
+             ============================================================ -->
+
+        <blockquote class="story-quote">
+
+          <span class="story-quote-mark" aria-hidden="true">
+            “
+          </span>
+
+          <p>
+            {{ story.quote }}
+          </p>
+
+          <footer class="story-quote-footer">
+            <span class="story-quote-line"></span>
+            <span>LEARNER VOICE</span>
+          </footer>
+
+        </blockquote>
+
+
+        <!-- ============================================================
+             PROOF
+             ============================================================ -->
+
+        <div class="story-proof">
+
+          <div class="story-proof-icon">
+            <svg
+              viewBox="0 0 24 24"
+              width="16"
+              height="16"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.4"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M20 6 9 17l-5-5"></path>
+            </svg>
+          </div>
+
+          <div class="story-proof-content">
+
+            <span class="story-proof-label">
+              PROOF OF WORK
+            </span>
+
+            <strong>
+              {{ story.proof }}
+            </strong>
+
+          </div>
+
+          <span class="story-proof-arrow" aria-hidden="true">
+            ↗
+          </span>
+
+        </div>
+
+
+        <!-- Bottom metadata -->
+        <footer class="story-card-footer">
+
+          <span>BUILD</span>
+          <span class="footer-dot">•</span>
+          <span>EXPERIENCE</span>
+          <span class="footer-dot">•</span>
+          <span>GROW</span>
+
+        </footer>
+
+      </article>
+
+      {% endfor %}
+
+    </div>
+
+
+    <!-- ================================================================
+         BOTTOM MOTIVATIONAL CTA
+         ================================================================ -->
+
+    <div class="placements-bottom-cta reveal">
+
+      <div class="placements-cta-glow" aria-hidden="true"></div>
+
+      <div class="placements-cta-content">
+
+        <span class="placements-cta-eyebrow">
+          YOUR STORY STARTS WITH ONE DECISION
+        </span>
+
+        <h3>
+          Someone's career story started with a first step.
+          <span>Yours can too.</span>
+        </h3>
+
       </div>
 
-      <div class="story-transformation">
-        <div class="trans-item trans-before">
-          <span class="trans-label">BEFORE KARKA</span>
-          <p>{{ story.before }}</p>
-        </div>
-        <div class="trans-arrow" aria-hidden="true">→</div>
-        <div class="trans-item trans-journey">
-          <span class="trans-label">180-DAY SPRINT</span>
-          <p>{{ story.journey }}</p>
-        </div>
-      </div>
+      <a
+        href="{{ url_for('apply') }}"
+        class="btn btn-primary placements-cta-button"
+      >
+        <span>Start My Journey</span>
 
-      <blockquote class="story-quote">
-        “{{ story.quote }}”
-      </blockquote>
+        <span
+          class="placements-cta-arrow"
+          aria-hidden="true"
+        >
+          ↗
+        </span>
+      </a>
 
-      <div class="story-proof-strip">
-        <span class="proof-icon">✅</span>
-        <div class="proof-details">
-          <span class="proof-label">PORTFOLIO EVIDENCE</span>
-          <strong>{{ story.proof }}</strong>
-        </div>
-      </div>
-    </article>
-    {% endfor %}
+    </div>
+
   </div>
+
 </section>
 
 <!-- ===================================================================
@@ -466,37 +687,6 @@
       </div>
     </article>
     {% endfor %}
-  </div>
-
-  <!-- Real Internship Visual Banner -->
-  <div class="container internship-visual-banner reveal">
-    <div class="banner-layout">
-      <div class="banner-copy">
-        <span class="banner-kicker">ON-CAMPUS INTERNSHIP SPRINT</span>
-        <h2>Work in a Real Startup Environment at Our Nagercoil Campus.</h2>
-        <p>
-          Experience daily standups, code reviews with senior tech leads, live CI/CD pipelines, and client demonstrations. This is where your confidence transforms from learner to professional engineer.
-        </p>
-        <div class="banner-highlights">
-          <div class="highlight-item"><span>💻 1-on-1 Senior Engineer Reviews</span></div>
-          <div class="highlight-item"><span>🚀 Real Pull Requests to Production</span></div>
-          <div class="highlight-item"><span>💼 Pre-Placement Offer (PPO) Opportunities</span></div>
-        </div>
-        <a class="btn btn-primary mt-16" href="{{ url_for('apply') }}?track=internship">
-          <span>Apply for Full Stack Internship ⚡</span>
-        </a>
-      </div>
-
-      <div class="banner-media">
-        <div class="media-frame">
-          <img src="{{ url_for('static', filename='img/internship-students.webp') }}" alt="Karka student builders collaborating on live projects" loading="lazy" />
-          <div class="media-overlay-badge">
-            <span class="pulse-green"></span>
-            <span>LIVE INTERNSHIP HUB · NAGERCOIL</span>
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
 </section>
 
@@ -582,57 +772,6 @@
           <li><strong>Group Discussions &amp; Whiteboarding:</strong> Live problem-solving under real pressure</li>
           <li><strong>Direct Partner Referrals:</strong> Priority interview access to Karka's hiring network</li>
         </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===================================================================
-     180-DAY CAREER SIMULATOR: See Your Transformation Timeline
-     =================================================================== -->
-<section class="section simulator-section" id="simulator">
-  <div class="container section-intro reveal">
-    <div class="intro-badge">
-      <span>📅 180-DAY SPRINT TO EMPLOYMENT</span>
-    </div>
-    <h2>See Your Journey Before You Begin.</h2>
-    <p class="section-deck">
-      A transparent day-by-day roadmap showing how we take you from square one to an interview-ready, confident tech professional.
-    </p>
-  </div>
-
-  <div class="container simulator-container reveal">
-    <div class="simulator-rail" role="tablist" aria-label="Career roadmap timeline">
-      {% for stage in simulator %}
-      <button class="stage-node-btn{% if loop.first %} active{% endif %}" type="button" data-stage-index="{{ loop.index0 }}" role="tab" aria-selected="{{ 'true' if loop.first else 'false' }}">
-        <span class="stage-day-tag">{{ stage.day }}</span>
-        <strong class="stage-title-tag">{{ stage.title }}</strong>
-      </button>
-      {% endfor %}
-    </div>
-
-    <div class="simulator-display-card">
-      <div class="sim-card-inner">
-        <div class="sim-card-top">
-          <span class="sim-stage-indicator" id="sim-active-day">{{ simulator[0].day }}</span>
-          <span class="sim-milestone-badge" id="sim-active-milestone">🎯 Milestone: {{ simulator[0].milestone }}</span>
-        </div>
-        <h3 class="sim-stage-heading" id="sim-active-title">{{ simulator[0].title }}</h3>
-
-        <div class="sim-skills-block">
-          <span class="block-label">WHAT YOU MASTER &amp; SHIP:</span>
-          <ul class="sim-skills-list" id="sim-active-skills">
-            {% for item in simulator[0].skills %}
-            <li>{{ item }}</li>
-            {% endfor %}
-          </ul>
-        </div>
-
-        <div class="sim-card-footer">
-          <a class="btn btn-primary" href="{{ url_for('apply') }}">
-            <span>Start This 180-Day Transformation ⚡</span>
-          </a>
-        </div>
       </div>
     </div>
   </div>
