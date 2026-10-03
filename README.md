@@ -78,7 +78,7 @@ For the AI assistant, add a Groq key:
 
 ```env
 GROQ_API_KEY=your_groq_api_key_here
-GROQ_MODEL=llama-3.3-70b-versatile
+GROQ_MODEL=openai/gpt-oss-20b
 ```
 
 The app still works without a key; the assistant falls back to a demo message.
@@ -134,7 +134,7 @@ For production, replace SQLite with a managed database and add authentication, r
 
 ## AI implementation note
 
-The app uses the official Groq Python client when `GROQ_API_KEY` is available. The selected default model in this demo is `llama-3.3-70b-versatile`; you can change it with `GROQ_MODEL`.
+The app uses the official Groq Python client when `GROQ_API_KEY` is available. The selected default model in this demo is `openai/gpt-oss-20b`; you can change it with `GROQ_MODEL`.
 
 The prompt is intentionally constrained to verified Karka facts so the assistant avoids inventing job guarantees, salary figures, partners, fees or student outcomes.
 
